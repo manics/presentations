@@ -64,7 +64,6 @@
 
         <section class="center">
           <h2>The Image Data Resource</h2>
-
           <div class="flexcontainer">
               <a href="https://idr-demo.openmicroscopy.org">
               <img src="images/idr-homepage-about.png" style="width:75%;"/>
@@ -80,15 +79,22 @@
 
         <section class="center">
           <h2>Open science: Open access + Open data</h2>
-
           <div class="flexcontainer">
             <div class="flex1">
-              <img src="images/logos/plos.svg" />
-              <img src="images/logos/figshare.png" />
+              <div>
+                <img src="images/logos/plos.svg" />
+              </div>
+              <div>
+                <img src="images/logos/figshare.png" />
+              </div>
             </div>
             <div class="flex1">
-              <img src="images/logos/ncbi.png" />
-              <img src="images/logos/jcbdata.png" />
+              <div>
+                <img src="images/logos/jcbdata.png" />
+              </div>
+              <div>
+                <img src="images/logos/ncbi.png" />
+              </div>
             </div>
           </div>
         </section>
@@ -96,7 +102,6 @@
 
         <section class="center">
           <h2>Open science: Open access + Open data</h2>
-
           <ul>
             <li>Reproducibility</li>
             <li>Re-use using different methods</li>
@@ -107,7 +112,6 @@
 
         <section class="center">
           <h2>Open science: Open access + Open data</h2>
-
           <p>Problems with imaging data
             <ul>
               <li>Storage and management</li>
@@ -131,11 +135,11 @@
 
         <section class="center">
           <h2>The Image Data Resource: in numbers</h2>
-
           <ul style="width:40%;">
             <li>25 published studies</li>
             <li>42 TB data</li>
             <li>14 million files</li>
+            <li>1 million experiments</li>
             <li>Computational resources:
               <ul class="dash">
                 <li class="nobullet">32 CPUs</li>
@@ -143,7 +147,6 @@
               </ul>
             </li>
           </ul>
-
           <div style="width: 55%; float: right;">
             <img src="images/dell-poweredge-fx2-fc630.jpg" />
           </div>
@@ -152,7 +155,6 @@
 
         <section class="center">
           <h2>The Image Data Resource: data management</h2>
-
           <ul style="width:40%;">
             <li>All studies are curated</li>
             <li>Data is arranged in a common layout</li>
@@ -163,7 +165,6 @@
               </ul>
             </li>
           </ul>
-
           <div style="width: 55%; float: right; position: relative;">
             <a href="https://github.com/IDR/idr-metadata/blob/master/idr0020-barr-chtog/idr0020-study.txt"><img src="images/idr0020-study.png" style="width: 70%;" /></a>
             <a href="https://github.com/IDR/idr-metadata/blob/master/idr0020-barr-chtog/screenA/idr0020-screenA-annotation.csv"><img src="images/idr0020-annotation.png" style="position: relative; left: 10%; top:-7em; width: 70%;" /></a>
@@ -178,7 +179,6 @@
 
 
         <section>
-
           <section class="center">
             <h2>Browse the data</h2>
             <div style="width: 45%; float: left;">
@@ -263,7 +263,6 @@
 
 
         <section class="center">
-
           <h2>IDR: A curated collection of diverse cross-referenced studies</h2>
           <ul>
             <li>Compare genes and phenotypes across different studies/experiments using <a gref="https://github.com/ome/omero-mapr">MAPR</a>, a new OMERO.web application.</li>
@@ -272,8 +271,8 @@
             </div>
             <li>
               <ul>
-                <li>Genes</li>
-                <li>Phenotypes</li>
+                <li>Genes (19,598)</li>
+                <li>Phenotypes (151)</li>
                 <li>siRNAs</li>
                 <li>Compounds</li>
                 <li>Organisms</li>
@@ -284,8 +283,8 @@
 
 
         <section>
-
-          <section class="center" data-background="images/mapr-aur-highlight-search.png" data-background-size="1024px" class="fullscreen-image">
+          <section data-background="images/mapr-aur-highlight-search.png" data-background-size="1024px" class="fullscreen-image">
+            <h2>Genes</h2>
             <div class="reference"><a href="http://idr-demo.openmicroscopy.org/mapr/gene/?experimenter=-1">http://idr-demo.openmicroscopy.org/mapr/gene/?experimenter=-1</a></div>
           </section>
 
@@ -301,15 +300,68 @@
         </section>
 
 
+        <section>
+
+          <section data-background="images/mapr-cmpo0000077-elongatedcell-crop.png" data-background-size="1024px" data-state="dim" class="fullscreen-image">
+            <h2>Phenotypes</h2>
+            <div style="width: 50%;">
+              <img src="images/ebi-cmpo-0000077.png" />
+            </div>
+          </section>
+
+          <section data-background="images/mapr-cmpo0000077-elongatedcell-crop.png" data-background-size="1024px" class="fullscreen-image">
+            <div class="reference"><a href="https://idr-demo.openmicroscopy.org/webclient/?show=phenotype-CMPO_00000777">https://idr-demo.openmicroscopy.org/webclient/?show=phenotype-CMPO_0000077</a></div>
+          </section>
+
+          <section data-background="images/cmpo-0000077.png" data-background-size="1024px" class="fullscreen-image">
+            <ul class="nobullet textoverlay" style="float: right;">
+              <li>Elongated cell phenotype</li>
+              <li style="color: green;">
+                S. pombe (idr-0001 Sysgro)
+                <a href="https://idr-demo.openmicroscopy.org/webclient/?show=screen-3"><img src="images/logos/idr-bullet.png" style="vertical-align: middle;"></a>
+              </li>
+              <li style="color: red;">
+                HeLa (idr-0008 Actinome)
+                <a href="https://idr-demo.openmicroscopy.org/webclient/?show=screen-154"><img src="images/logos/idr-bullet.png" style="vertical-align: middle;"></a>
+              </li>
+              <li style="color: blue;">
+                HeLa (idr-0012 CellMorph)
+                <a href="https://idr-demo.openmicroscopy.org/webclient/?show=screen-1202"><img src="images/logos/idr-bullet.png" style="vertical-align: middle;"></a>
+              </li>
+            </ul>
+          </section>
+
+          <section data-background="images/cmpo-0000077-zoom.png" data-background-size="1024px" class="fullscreen-image">
+            <ul class="nobullet textoverlay" style="float: right;">
+              <li>Elongated cell phenotype</li>
+              <li style="color: green;">
+                S. pombe (idr-0001 Sysgro)
+                <a href="https://idr-demo.openmicroscopy.org/webclient/?show=screen-3"><img src="images/logos/idr-bullet.png" style="vertical-align: middle;"></a>
+              </li>
+              <li style="color: red;">
+                HeLa (idr-0008 Actinome)
+                <a href="https://idr-demo.openmicroscopy.org/webclient/?show=screen-154"><img src="images/logos/idr-bullet.png" style="vertical-align: middle;"></a>
+              </li>
+              <li style="color: blue;">
+                HeLa (idr-0012 CellMorph)
+                <a href="https://idr-demo.openmicroscopy.org/webclient/?show=screen-1202"><img src="images/logos/idr-bullet.png" style="vertical-align: middle;"></a>
+              </li>
+            </ul>
+          </section>
+
+        </section>
+
+
         <section class="center">
           <h2>The Image Data Resource: in numbers</h2>
-
           <ul style="width:40%;">
             <li>25 published studies</li>
             <li>42 TB data</li>
             <li>14 million files</li>
+            <li>1 million experiments</li>
+            <li>19,598 genes</li>
+            <li>151 Phenotypes</li>
           </ul>
-
           <div style="width: 45%; float: right;">
             <img src="images/big_data_harddrives.jpg" />
           </div>
@@ -329,21 +381,22 @@
 
 
         <section class="center">
+          <div>
+            <a href="http://dx.doi.org/10.1101/089359"><img src="images/biorxiv-idr-preprint.png" class="plain"></a>
+          </div>
+        </section>
+
+
+        <section class="center">
           <h2>The IDR team</h2>
           <div>
             <img src="images/idr-team.png" class="plain">
-          </div>
-
-          <div style="background-color: #fff;">
-            <img src="images/logos/wellcome.png" height="140px">
-            <img src="images/logos/bbsrc.png" height="140px">
           </div>
         </section>
 
       </div>
 
     </div>
-
 
 
     <script src="reveal-js/lib/js/head.min.js"></script>
