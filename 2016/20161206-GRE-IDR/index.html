@@ -37,7 +37,7 @@
     <![endif]-->
   </head>
 
-  <body class="ome_theme">
+  <body class="idr_theme">
 
     <div class="reveal">
 
@@ -53,6 +53,16 @@
 
 
         <section class="center">
+          <h2>Overview</h2>
+          <ul>
+            <li>Why did we build this?</li>
+            <li>How did we create it?</li>
+            <li>What can you do with it?</li>
+          </ul>
+        </section>
+
+
+        <section class="center">
           <h2>The Image Data Resource</h2>
 
           <div class="flexcontainer">
@@ -60,16 +70,6 @@
               <img src="images/idr-homepage-about.png" style="width:75%;"/>
               <p>https://idr-demo.openmicroscopy.org</p></a>
           </div>
-        </section>
-
-
-        <section class="center">
-          <h2>Overview</h2>
-          <ul>
-            <li>Why did we build this?</li>
-            <li>How did we create it?</li>
-            <li>What can you do with it?</li>
-          </ul>
         </section>
 
 
@@ -124,9 +124,8 @@
 
 
         <section class="center">
-          <h2>The Image Data Resource</h2>
-          <!--TODO: OpenStack network screenshot and cpu/mem/vm stats-->
           <img src="images/logos/omero-800.png" style="width:100%;" />
+          <div class="reference"><a href="https://idr-demo.openmicroscopy.org/about/deployment.html">https://idr-demo.openmicroscopy.org/about/deployment.html</a></div>
         </section>
 
 
@@ -152,7 +151,7 @@
 
 
         <section class="center">
-          <h2>The Image Data Resource: data management protocols</h2>
+          <h2>The Image Data Resource: data management</h2>
 
           <ul style="width:40%;">
             <li>All studies are curated</li>
@@ -178,16 +177,26 @@
         </section class="center">
 
 
-        <section class="center">
-          <h2>Browse the data</h2>
-          <ul style="width:50%;">
-            <li>Raw data not previously accessible, for example <a href="http://dx.doi.org/10.1038/nature08869">Mitocheck (published 2010)</a></li>
-          </ul>
-          <div style="width: 45%; float: right;">
-            <!--TODO: SCREENSHOT-->
-            <img src="images/mitocheck-paper.png" />
-            <img src="images/big_data_harddrives.jpg" />
-          </div>
+        <section>
+
+          <section class="center">
+            <h2>Browse the data</h2>
+            <div style="width: 45%; float: left;">
+              <ul>
+                <li>Raw data not previously accessible, for example <a href="http://dx.doi.org/10.1038/nature08869">Mitocheck (published 2010)</a></li>
+              </ul>
+              <img src="images/mitocheck-paper.png" />
+            </div>
+            <div style="width: 45%; float: right;">
+              <img src="images/big_data_harddrives.jpg" />
+            </div>
+          </section>
+
+
+          <section data-background="images/idr0013-overview-contrast.png" data-background-size="1024px" class="fullscreen-image">
+            <div class="reference"><a href="https://idr-demo.openmicroscopy.org/webclient/?show=plate-3451">https://idr-demo.openmicroscopy.org/webclient/?show=plate-3451</a></div>
+          </section>
+
         </section>
 
 
@@ -210,6 +219,23 @@
 
         <section>
 
+          <section data-background="images/idr0015-example-highlight-attributes.png" data-background-size="1024px" class="fullscreen-image">
+            <h2>External links: logbooks</h2>
+            <div class="reference"><a href="https://idr-demo.openmicroscopy.org/webclient/?show=plate-4358">https://idr-demo.openmicroscopy.org/webclient/?show=plate-4358</a></div>
+          </section>
+
+          <section data-background="images/idr0015-example-highlight-attributes.png" data-background-size="1024px" data-state="dim" class="fullscreen-image">
+            <div style="width: 60%;">
+              <img src="images/idr0015-example-external1.png" />
+              <img src="images/idr0015-example-external2.png" />
+            </div>
+          </section>
+
+        </section>
+
+
+        <section>
+
           <section data-background="images/idr0002-example-image-highlight-gene.png" data-background-size="1024px" class="fullscreen-image">
             <h2>External links: genes</h2>
             <div class="reference"><a href="https://idr-demo.openmicroscopy.org/webclient/?show=well-67092">https://idr-demo.openmicroscopy.org/webclient/?show=well-67092</a></div>
@@ -220,6 +246,10 @@
               <img src="images/idr0002-example-image-gene.png" />
               <img src="images/idr0002-ensemble-ndc80.png" />
             </div>
+          </section>
+
+          <section data-background="images/idr0002-example-image-highlight-gene.png" data-background-size="1024px"  data-state="dim" class="fullscreen-image">
+            <h2>Internal links: genes</h2>
           </section>
 
           <section data-background="images/idr0002-example-image-highlight-gene.png" data-background-size="1024px" data-state="dim" class="fullscreen-image">
@@ -236,18 +266,27 @@
 
           <h2>IDR: A curated collection of diverse cross-referenced studies</h2>
           <ul>
-            <li>Compare genes and phenotypes across different studies, organisms, experiments, modalities using MAPR.</li>
-            <li>New OMERO.web application developed by Ola Tarkowska</li>
+            <li>Compare genes and phenotypes across different studies/experiments using <a gref="https://github.com/ome/omero-mapr">MAPR</a>, a new OMERO.web application.</li>
+            <div style="width: 30%; float: right;">
+              <img src="images/github-ola.jpg" />
+            </div>
+            <li>
+              <ul>
+                <li>Genes</li>
+                <li>Phenotypes</li>
+                <li>siRNAs</li>
+                <li>Compounds</li>
+                <li>Organisms</li>
+              </ul>
+            </li>
           </ul>
-          <div style="width: 30%; float: right;">
-            <img src="images/github-ola.jpg" />
-          </div>
         </section>
 
 
         <section>
 
           <section class="center" data-background="images/mapr-aur-highlight-search.png" data-background-size="1024px" class="fullscreen-image">
+            <div class="reference"><a href="http://idr-demo.openmicroscopy.org/mapr/gene/?experimenter=-1">http://idr-demo.openmicroscopy.org/mapr/gene/?experimenter=-1</a></div>
           </section>
 
           <section class="center" data-background="images/mapr-aur-highlight-search.png" data-background-size="1024px" data-state="dim" class="fullscreen-image">
@@ -262,9 +301,24 @@
         </section>
 
 
+        <section class="center">
+          <h2>The Image Data Resource: in numbers</h2>
+
+          <ul style="width:40%;">
+            <li>25 published studies</li>
+            <li>42 TB data</li>
+            <li>14 million files</li>
+          </ul>
+
+          <div style="width: 45%; float: right;">
+            <img src="images/big_data_harddrives.jpg" />
+          </div>
+        </section>
+
+
         <section>
 
-          <section class="center" data-background="images/jupyter-overview-scratch-crop.png" data-background-size="1024px" class="fullscreen-image">
+          <section data-background="images/jupyter-overview-scratch-crop.png" data-background-size="1024px" class="fullscreen-image">
             <h2>Analysis platform</h2>
           </section>
 
@@ -275,24 +329,11 @@
 
 
         <section class="center">
-          <dl>
-            <h2>Resources</h2>
-            <dt>OME ansible playbooks (under development)</dt>
-            <dd><a href="https://github.com/openmicroscopy/infrastructure/">https://github.com/openmicroscopy/infrastructure/</a></dd>
-            <dt>OME Docker images (under development)</dt>
-            <dd><a href="https://hub.docker.com/u/openmicroscopy/">https://hub.docker.com/u/openmicroscopy/</a></dd>
-            <dt>Image Data Repository</dt>
-            <dd><a href="http://idr-demo.openmicroscopy.org/">http://idr-demo.openmicroscopy.org/</a></dd>
-          </dl>
-        </section>
+          <h2>The IDR team</h2>
+          <div>
+            <img src="images/idr-team.png" class="plain">
+          </div>
 
-        <section class="center">
-          <h2>Thank you</h2>
-          <ul>
-            <li>Prof. Jason Swedlow</li>
-            <li>OME team</li>
-          </ul>
-          <br/><br/>
           <div style="background-color: #fff;">
             <img src="images/logos/wellcome.png" height="140px">
             <img src="images/logos/bbsrc.png" height="140px">

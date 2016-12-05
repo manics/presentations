@@ -5,11 +5,12 @@
 .reveal h2 {
     font-size: 60px;
 }
-.ome_theme {
-    background-image: url("../images/ome-icon-opacity.png");
-    background-color: #f2f6f9;
-    background-repeat: no-repeat;
-    background-position: right -270px top -120px;
+
+.idr_theme {
+  background-color: #f2f6f9;
+  background:
+    url("../images/ome-icon-opacity.png") right -270px top -270px no-repeat,
+    url("../images/idr-icon-opacity-half.png") left -200px bottom -200px no-repeat;
 }
 
 .fullscreen-image {
