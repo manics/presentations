@@ -141,8 +141,9 @@ div.box {
     background-color: rgba(242,246,249,0.8);
 }
 
-.textoverlay {
+div.textoverlay, ul.textoverlay {
     background-color: rgba(242,246,249,0.8);
+    padding: 10px;
 }
 
 div.idrteam {
