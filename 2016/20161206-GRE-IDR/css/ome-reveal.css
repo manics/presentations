@@ -144,3 +144,23 @@ div.box {
 .textoverlay {
     background-color: rgba(242,246,249,0.8);
 }
+
+div.idrteam {
+    font-size: 16pt;
+    padding: 10pt;
+}
+
+div.idrteam div {
+    width: 11%;
+    display: inline-block;
+    vertical-align: top;
+}
+
+div.idrteam img {
+    height: 100px;
+    margin: 0;
+}
+
+.reveal img.whitelogo {
+    background-color: white;
+}
