@@ -26,6 +26,13 @@
     transition: all .15s linear;
 }
 
+.fullscreen-image div {
+    background-color: rgba(242,246,249,0.8);
+    text-align: left;
+    width: 50%;
+    margin-left: 50%;
+}
+
 .fullscreen-image h2:hover, .fullscreen-image h3:hover {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.55);
 }
@@ -100,6 +107,10 @@ table.centre {
     bottom:100%;
     margin:5px;
     color:red;
+}
+
+p {
+  text-align: left;
 }
 
 a.annotate, div.annotate {

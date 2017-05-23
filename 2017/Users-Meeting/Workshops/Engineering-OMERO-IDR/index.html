@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8">
 
-    <title>OMERO@scale: How we built the IDR</title>
+    <title>OME2017 » Engineering the IDR</title>
 
     <meta name="author" content="Simon Li">
 
@@ -60,39 +60,45 @@
               <li>Show how to automate a large scale OMERO system</li>
               <li>Introduce the principles and resources we use</li>
             </ul>
-            <p class="fragment">Discussion</p>
+            <h2 class="fragment">Discussion</h2>
+          </section>
+
+          <section data-background="images/idr-screenshot-placeholder.png" data-background-size="1024px" class="fullscreen-image">
+            <h2>The Image Data Repository</h2>
+            <div>
+              <p>A public resource to store, integrate and serve image datasets from published scientific studies.</p>
+              <ul>
+                <li>42 TB image data</li>
+                <li>2.7 million images</li>
+                <li>41 studies</li>
+              </ul>
+            </div>
           </section>
 
           <section class="center">
-            <h2>The Image Data Repository</h2>
+            <h2>Behind the scenes</h2>
             <ul>
-              <li>A public resource to store, integrate and serve image datasets from published scientific studies</li>
-              <li>42 TB image data</li>
-              <li>2.7 million images</li>
+              <li>98 TB raw data</li>
+              <li>15 million files</li>
+              <li>19 million annotations</li>
             </ul>
-          </section>
-
-          <!--
+            <aside class="notes">
             Annotation: 2838234
             MapAnnotation: 2828438
             ImageAnnotationLink: 13114596
             WellAnnotationLink: 5420574
-          -->
-          <section class="center">
-            <h2>Behind the scenes:</h2>
-            <ul>
-              <li>98 TB raw data</li>
-              <li>14.6 million files</li>
-              <li>18.5 million annotation links (2.8 million annotations)</li>
-            </ul>
+	          </aside>
           </section>
 
           <section class="center">
-            <h2>Overview of the current IDR</h2>
-            <div>
+            <h1>Overview of the current IDR</h1>
+          </section>
+
+          <section class="center">
+            <div class="box">
 
               <div class="flexcontainer">
-                <div class="flex2 fragment box">
+                <div class="flex2 fragment box" data-fragment-index="4">
                   <img src="images/logos/nginx-logo.svg" class="plain" style="width:30%;" />
                   <a href="https://idr.openmicroscopy.org" class="annotatex">https://idr.openmicroscopy.org</a>
                 </div>
@@ -103,36 +109,38 @@
               </div>
 
               <div class="flexcontainer">
-                <div class="flex1 fragment">
-                  <a href="https://idr.openmicroscopy.org/webclient/userdata/?experimenter=-1" class="annotate">Public IDR</a>
+                <div class="flex1 fragment" data-fragment-index="2">
+                  <a href="https://idr.openmicroscopy.org/webclient/userdata/?experimenter=-1" class="annotate">Public IDR backend</a>
                   <div class="box">
                     <img src="images/logos/omero-logo-800.png" class="plain" />
                     <div class="annotate">OMERO.server</div>
                     <div class="annotate">OMERO.web</div>
                   </div>
-                  <div class="box">
+                  <div class="box fragment" data-fragment-index="3">
                     <img src="images/logos/postgresql-logo.png" class="plain" style="width: 70%;" />
                   </div>
                 </div>
 
-                <div class="flex1 fragment">
+                <div class="flex1 fragment" data-fragment-index="5">
                   <a href="https://idr.openmicroscopy.org/jupyter/" class="annotate">IDR analysis</a>
                   <div class="box">
                     <img src="images/logos/jupyterhub-80.png" class="plain" style="width: 70%;" />
                     <img src="images/logos/docker-logo-h-trans.png" class="plain" style="width: 70%;" />
                   </div>
-                  <div class="box">
+                  <div class="box fragment" data-fragment-index="7">
                     <img src="images/logos/omero-logo-800.png" class="plain" />
+                    <div class="annotate">OMERO.server</div>
                   </div>
-                  <div class="box">
+                  <div class="box fragment" data-fragment-index="7">
                     <img src="images/logos/postgresql-logo.png" class="plain" style="width: 70%;" />
                   </div>
                 </div>
 
-                <div class="flex1 fragment">
+                <div class="flex1 fragment" data-fragment-index="8">
                   <a class="annotate">Monitoring system</a>
                   <div class="box">
-                    Munin
+                    <img src="images/logos/munin.png" class="plain" style="width: 70%;" />
+                    <img src="images/logos/prometheus.png" class="plain" style="width: 70%; opacity: 0.5;" />
                   </div>
                 </div>
 
@@ -142,7 +150,10 @@
           </section>
 
           <section class="center">
-            <h2>Current IDR compute resources</h2>
+            <h2>IDR cloud resources:</h2>
+            <h4>76 vCPUs</h4>
+            <h4>296 GB RAM</h4>
+            <h4>13 TB volatile storage</h4>
           </section>
 
           <section class="center">
@@ -154,15 +165,20 @@
         <!-- Devops -->
         <section>
           <section class="center">
-            <h2>"Devops"</h2>
+            <h1>"Devops"</h1>
+            <h3>What is it?</h3>
+          </section>
+
+          <section data-background="images/dev-ops-problem.jpg" data-background-size="1024px" class="fullscreen-image">
           </section>
 
           <section class="center">
-            <h2>Worked in dev, ops problem now</h2>
-          </section>
-
-          <section class="center">
-            <h2>In IDR: Two core concepts: cfg-mgmt, virtualisation</h2>
+            <h2>IDR: Three key concepts</h2>
+            <ul>
+              <li>Resource virtualisation</li>
+              <li>Configuration Management</li>
+              <li class="fragment">Develop-Test-Release new datasets</li>
+            </ul>
           </section>
         </section>
 
@@ -170,7 +186,74 @@
         <!-- Configuration management -->
         <section>
           <section class="center">
-            <h2>Configuration management</h2>
+            <h1>Configuration management</h1>
+          </section>
+
+          <section class="center">
+            <h2>What is configuration management?</h2>
+
+            <div class="flexcontainer">
+              <ul class="flex2">
+                <li>A systematic way to setup and configure your servers</li>
+                <li>"Infrastructure as code"</li>
+              </ul>
+              <div class="flex1">
+                <a href="https://www.ansible.com/">
+                  <img src="images/logos/ansible-logo.png" />
+                </a>
+                <a href="https://saltstack.com/">
+                  <img src="images/logos/saltstack-logo.png" />
+                </a>
+              </div>
+              <div class="flex1">
+                <a href="https://www.chef.io/">
+                  <img src="images/logos/chef_logo.png" />
+                </a>
+                <a href="https://puppet.com/">
+                  <img src="images/logos/puppet-logo.png" />
+                </a>
+              </div>
+            </div>
+          </section>
+
+          <section class="center">
+            <h2>"Infrastructure as code"</h2>
+
+            <div class="flexcontainer">
+              <ul class="flex1">
+                <li>Reproducible installations</li>
+                <li>Documentation</li>
+                <li>Version control</li>
+                <li>GitHub code reviews</li>
+              </ul>
+              <div class="flex1 fragment">
+                <a href="https://github.com/openmicroscopy/infrastructure/pulls">
+                  <img src="images/infrastructure-prs-20170523.png" />
+                </a>
+          </section>
+
+
+          <section class="center">
+            <h2>What can it do for OMERO?</h2>
+
+            <div class="flexcontainer">
+              <ul class="flex1">
+                <li>Open-source our <a href="https://github.com/openmicroscopy/infrastructure">infrastructure</a></li>
+                <li>Manage all dependencies</li>
+                <li>Install, configure, upgrade</li>
+              </ul>
+              <div class="flex1">
+                <a href="http://www.openmicroscopy.org/site/support/omero5.3/sysadmins/index.html">
+                  <img src="images/ome-sysadmin-install-docs.png" />
+                </a>
+              </div>
+            </div>
+          </section>
+
+
+          <section class="center">
+            <h2>IDR Deployment on GitHub</h2>
+            <img src="images/github-idr-deployment-repo.png" />
           </section>
 
           <section class="center">
@@ -182,26 +265,109 @@
         <!-- OMERO all-in-one -->
         <section>
           <section class="center">
-            <h2>Ansible roles and playbooks</h2>
+            <h2>Ansible roles</h2>
+            <div class="flexcontainer">
+              <div class="flex1">
+                <a href="https://galaxy.ansible.com/openmicroscopy/">
+                  <img src="images/ansible-galaxy-openmicroscopy-head.png" />
+                </a>
+              </div>
+              <ul class="flex" style="list-style-image: url('images/logos/ansible-a-24.png');">
+                <li><a href="https://galaxy.ansible.com/openmicroscopy/omero-server/">omero-server role</a></li>
+                <li><a href="https://galaxy.ansible.com/openmicroscopy/omero-web/">omero-web role</a></li>
+              </ul>
           </section>
 
+
           <section class="center">
-            <h2>All-in-one OMERO.server</h2>
+            <div class="flexcontainer">
+              <h4 class="flex1">
+TODO
+                All-in-one OMERO.server
+              </h4>
+              <div class="flex3">
+                <pre class="small"><code data-trim class="yaml">
+# playbook-1.yml
+- hosts: localhost
+  roles:
+  - openmicroscopy.omero-server
+  vars:
+    postgresql_users_databases:
+    - user: omero
+      password: omero
+      databases: [omero]
+                </code></pre>
+              </div>
+            </div>
+            <div>
+              <pre class="small"><code data-trim class="bash">
+ansible-playbook playbook-1.yml
+              </code></pre>
+            </div>
           </section>
         </section>
 
         <!-- Scaling up -->
         <section>
           <section class="center">
-            <h2>Separate database</h2>
+            <div class="flexcontainer">
+              <h4 class="flex1">
+TODO
+                Separate database
+              </h4>
+              <div class="flex3">
+                <pre class="small"><code data-trim class="yaml">
+# playbook-2.yml
+- hosts: localhost
+  roles:
+  - openmicroscopy.omero-server
+  vars:
+    postgresql_users_databases:
+    - user: omero
+      password: omero
+      databases: [omero]
+                </code></pre>
+              </div>
+            </div>
+            <div>
+              <pre class="small"><code data-trim class="bash">
+ansible-playbook playbook-2.yml
+              </code></pre>
+            </div>
           </section>
 
           <section class="center">
-            <h2>Separate database, OMERO.server and OMERO.web</h2>
+            <div class="flexcontainer">
+              <h4 class="flex1">
+TODO
+                Separate database, OMERO.server, OMERO.web
+              </h4>
+              <div class="flex3">
+                <pre class="small"><code data-trim class="yaml">
+# playbook-3.yml
+- hosts: localhost
+  roles:
+  - openmicroscopy.omero-server
+  vars:
+    postgresql_users_databases:
+    - user: omero
+      password: omero
+      databases: [omero]
+                </code></pre>
+              </div>
+            </div>
+            <div>
+              <pre class="small"><code data-trim class="bash">
+ansible-playbook playbook-3.yml
+              </code></pre>
+            </div>
           </section>
 
           <section class="center">
             <h2>Public OMERO.web configuration</h2>
+            <a href="https://github.com/openmicroscopy/ansible-public-omero-example">
+              <img src="images/github-ansible-public-omero-example-repo.png" />
+            </a>
           </section>
 
           <section class="center">
@@ -338,235 +504,8 @@
 
 
 
-
-        <section>
-          <section class="center">
-            <h2>Aims of this talk</h2>
-            <ul class="fragment">
-              <li>Explain how the IDR systems are deployed and managed</li>
-              <li>Show how to automate a small or large scale OMERO system</li>
-              <li>Introduce the principles and resources used</li>
-            </ul>
-            <ul class="fragment">
-              <li>Discussion</li>
-            </ul>
-          </section>
-
-          <section class="center">
-            <h2>The Image Data Repository</h2>
-
-            <ul>
-              TODO: update
-              <li>A public resource to store, integrate and serve image datasets from published scientific studies</li>
-              <li>42 TB raw data</li>
-              <li>2.8 million images</li>
-            </ul>
-          </section>
-
-        </section>
-
-
 <!-- https://theagileadmin.com/what-is-devops/ -->
 
-        <section class="center">
-          <h2>Overview Part 1: IDR Development</h2>
-
-          <ol>
-            <li>Get hold of the data</li>
-            <li class="fragment">Buy some disks and servers</li>
-            <li class="fragment">Install OMERO.server (Docker)</li>
-            <li class="fragment">Setup a public OMERO.web</li>
-            <li class="fragment">Import some data</li>
-            <li class="fragment">Discover bugs in OMERO</li>
-            <li class="fragment">Discover bugs in hardware setup</li>
-            <li class="fragment">Import more data</li>
-            <li class="fragment">Discover more bugs</li>
-            <li class="fragment">Import more data</li>
-            <li class="fragment">Discover more bugs</li>
-            <li class="fragment">....</li>
-          </ol>
-        </section>
-
-
-        <section class="center">
-          <h2>August 2015: Dundee: our hardware</h2>
-
-          <div style="width: 50%; float: right;">
-            <img src="images/dell-fc630.jpg" />
-            <img src="images/dell-md3800i.jpg" />
-            <img src="images/dell-fc630.jpg" />
-            <img src="images/dell-md3800i.jpg" />
-          </div>
-
-          <ul style="width:40%;">
-            <li>Dell PowerVault MD3860f storage array + expansion enclosure: 450+ TB (300+ TB usable)</li>
-            <ul><li>2 FC630 Dell storage servers (12 cores, 128 GB RAM)</li></ul>
-            <li>6 FC630 Dell compute servers (28 cores, 256 GB RAM)</li>
-          </ul>
-        </section>
-
-
-        <section class="center">
-          <h2>Dundee storage platform: GPFS</h2>
-
-          <ul>
-            <li>Used by the School of Life Sciences</li>
-            <li>Can be shared amongst multiple servers</li>
-            <li>Takes a <emph>lot</emph> of tuning</li>
-          </ul>
-        </section>
-
-
-        <section class="center">
-          <h2>Dundee compute servers</h2>
-
-          <div style="display:flex;">
-            <div style="flex:1;" class="box">
-              <img src="images/logos/centos-logo-light-tagline-release7.svg" />
-              <img src="images/logos/docker-logo-h-trans.png" />
-              Production
-            </div>
-            <div style="flex:1;" class="box">
-              <img src="images/logos/centos-logo-light-tagline-release7.svg" />
-              <img src="images/logos/docker-logo-h-trans.png" />
-              Development
-            </div>
-          </div>
-
-          <div style="display:flex;">
-            <div style="flex: 1;" class="box">
-              <img src="images/logos/centos-logo-light-tagline-release7.svg" />
-            </div>
-            <div style="flex:1;" class="box">
-              <img src="images/logos/centos-logo-light-tagline-release7.svg" />
-            </div>
-            <div style="flex:1;" class="box">
-              <img src="images/logos/centos-logo-light-tagline-release7.svg" />
-            </div>
-            <div style="flex:1;" class="box">
-              <img src="images/logos/centos-logo-light-tagline-release7.svg" />
-            </div>
-          </div>
-        </section>
-
-
-        <section class="center">
-          <h2>System layout</h2>
-
-          <div class="box">
-            <img src="images/logos/docker-logo-h-trans.png" style="width:50%;"/>
-            <div class="flexcontainer">
-              <div class="flex1 box">
-                <img src="images/logos/omero-logo-800.png" />
-              </div>
-              <div class="flex1 box">
-                <img src="images/logos/omero-logo-800.png" />
-              </div>
-              <div class="flex1 box">
-                <img src="images/logos/omero-logo-800.png" />
-              </div>
-              <div class="flex1 box">
-                <img src="images/logos/omero-logo-800.png" />
-              </div>
-            </div>
-          </div>
-          <div class="box">
-            <img src="images/logos/nginx-logo.svg" style="height:2em; vertical-align:middle;" />
-            front-end proxy
-          </div>
-        </section>
-
-
-        <section data-background="images/idr-demo-1-screenshot.png" data-background-size="1024px" class="fullscreen-image">
-          <h2>October 2015: Official launch (EMBL Seeing is Believing)</h2>
-        </section>
-
-
-        <section class="center">
-          <h2>Overview Part 2: IDR Production</h2>
-
-          <ol>
-            <li class="fragment">Write Ansible playbooks, deploy on Dundee cloud</li>
-            <li class="fragment">Mirror final deployment environment (OpenStack)</li>
-            <li class="fragment">Reproduce setup on EBI Embassy cloud</li>
-            <li class="fragment">Performance tuning</li>
-          </ol>
-        </section>
-
-
-        <section>
-
-          <section class="center">
-            <h2>What is configuration management?</h2>
-
-            <div class="flexcontainer">
-              <ul class="flex2">
-                <li>A systematic way to setup and configure your servers</li>
-                <li>"Infrastructure as code"</li>
-              </ul>
-              <div class="flex1">
-                <a href="https://www.ansible.com/">
-                  <img src="images/logos/ansible-logo.png" />
-                </a>
-                <a href="https://saltstack.com/">
-                  <img src="images/logos/saltstack-logo.png" />
-                </a>
-              </div>
-              <div class="flex1">
-                <a href="https://saltstack.com/https://www.chef.io/">
-                  <img src="images/logos/chef_logo.png" />
-                </a>
-                <a href="https://puppet.com/">
-                  <img src="images/logos/puppet-logo.png" />
-                </a>
-              </div>
-            </div>
-          </section>
-
-          <section class="center">
-            <h2>"Infrastructure as code"</h2>
-
-            <ul>
-              <li>Reproducible installations</li>
-              <li>Documentation</li>
-              <li>Version control</li>
-              <li>GitHub code reviews</li>
-            </ul>
-            TODO: GH PR screenshot
-          </section>
-
-          <section class="center">
-            <h2>What can it do for OMERO?</h2>
-
-            <div class="flexcontainer">
-              <div class="flex1">
-                <ul>
-                  <li>Open-source our <a href="https://github.com/openmicroscopy/infrastructure">infrastructure</a></li>
-                  <li>Manage all dependencies</li>
-                  <li>Install, configure, upgrade</li>
-                </ul>
-                <img src="images/ome-sysadmin-install-docs.png" style="width:50%;" />
-              </div>
-              <div class="flex1">
-                <a href="https://github.com/openmicroscopy/infrastructure">
-                  <img src="images/github-infrastructure-repo.png" />
-                </a>
-              </div>
-            </div>
-          </section>
-
-        </section>
-
-
-        <section class="center">
-          <h2>November 2015: OpenStack at Dundee</h2>
-
-          <ul>
-            <li>Open-source cloud platform used at EMBL-EBI</li>
-            <li>Gives us full admin access to a private cloud</li>
-            <li><emph>Difficult to install</emph></li>
-          </ul>
-        </section>
 
 
         <section class="center">
@@ -581,39 +520,9 @@
         </section>
 
 
-        <section class="center">
-          <h2>February 2016: OMERO on OpenStack with Ansible</h2>
-
-          <div style="display:flex;">
-          <ul style="flex:2;">
-            <li>First production use of Ansible with OMERO</li>
-            <li>Single-node deployment</li>
-            <li>Uses <a href="https://github.com/ome/omego">omego</a>, our OMERO installation and upgrade tool</li>
-          </ul>
-          <div style="flex:3;">
-            <pre class="small"><code data-trim class="yaml">
-# omero.yml
-- hosts: localhost
-  roles:
-  - omero-server
-    postgresql_users_databases:
-    - user: omero
-      password: omero
-      databases: [omero]
-            </code></pre>
-
-            <pre class="small"><code data-trim class="bash">
-git clone https://github.com/openmicroscopy/infrastructure
-
-ansible-playbook run omero.yml
-            </code></pre>
-          </div>
-        </div>
-        </section>
-
 
         <section class="center">
-          <h2>April 2016: Multi-node OMERO OpenStack deployment</h2>
+          <h2>Multi-node OMERO OpenStack deployment</h2>
 
           <div class="flexcontainer">
             <div class="flex1">
@@ -653,45 +562,7 @@ ansible-playbook -i inventory/openstack.py -e @vars/ome2016-overrides.yml os-idr
 
 
         <section class="center">
-          <h2>May 2016: Redeploy at EBI</h2>
-
-          <pre class="tiny"><code data-trim data-noescape class="yaml">
-- include: os-create.yml
-  vars:
-    omero_vm_extra_groups: <mark>"u⃫o⃫d⃫-⃫n⃫f⃫s⃫ ebi-nfs</mark>,idr-hosts"
-    os_cloud_provider: <mark>u⃫o⃫d⃫ ebi</mark>
-
-- include: os-volumes.yml
-  vars:
-    os_cloud_provider: <mark>u⃫o⃫d⃫ ebi</mark>
-
-- hosts: database-hosts
-  roles:
-  - role: storage-volume-initialise
-    storage_volume_initialise_device: /dev/vdb
-    storage_volume_initialise_mount: /var/lib/pgsql
-
-- hosts: omero-hosts
-  roles:
-  - role: storage-volume-initialise
-    storage_volume_initialise_device: /dev/vdb1
-    storage_volume_initialise_mount: /data
-
-- hosts: proxy-hosts
-  roles:
-  - role: storage-volume-initialise
-    storage_volume_initialise_device: /dev/vdb
-    storage_volume_initialise_mount: /var/cache/nginx
-
-- include: <mark>i⃫d⃫r⃫-⃫d⃫u⃫n⃫d⃫e⃫e⃫-⃫n⃫f⃫s⃫.⃫y⃫m⃫l⃫ idr-ebi-nfs.yml</mark>
-
-- include: os-omero.yml
-          </code></pre>
-        </section>
-
-
-        <section class="center">
-          <h2>May 2016: Production tuning</h2>
+          <h2>Production tuning</h2>
 
           <ul>
             <li>OMERO.server: Loading screens is slow
@@ -709,7 +580,7 @@ ansible-playbook -i inventory/openstack.py -e @vars/ome2016-overrides.yml os-idr
         <section>
 
           <section class="center">
-            <h2>May 2016: Production tuning</h2>
+            <h2>Production tuning</h2>
             <!-- TODO: Screenshot, overlay with text? -->
 
             <ul>
@@ -720,7 +591,7 @@ ansible-playbook -i inventory/openstack.py -e @vars/ome2016-overrides.yml os-idr
           </section>
 
           <section class="center">
-            <h2>May 2016: Production tuning</h2>
+            <h2>Production tuning</h2>
             <h4>Scripts to pre-warm cache</h4>
 
             <ul>
@@ -730,7 +601,7 @@ ansible-playbook -i inventory/openstack.py -e @vars/ome2016-overrides.yml os-idr
           </section>
 
           <section class="center">
-            <h2>May 2016: Production tuning</h2>
+            <h2>Production tuning</h2>
             <h4>Cached on first request</h4>
 
             <ul>
@@ -740,7 +611,7 @@ ansible-playbook -i inventory/openstack.py -e @vars/ome2016-overrides.yml os-idr
           </section>
 
           <section class="center">
-            <h2>May 2016: Production tuning</h2>
+            <h2>Production tuning</h2>
 
             <ul>
               <li>Web session management: <a href="http://www.openmicroscopy.org/site/support/omero5.2/sysadmins/unix/install-web.html#omero-web-maintenance-unix-linux">Redis</a></li>
@@ -757,7 +628,7 @@ ansible-playbook -i inventory/openstack.py -e @vars/ome2016-overrides.yml os-idr
 
 
         <section data-background="images/idr-demo-2-screenshot.png" data-background-size="1024px" class="fullscreen-image">
-          <a href="http://idr-demo.openmicroscopy.org/"><h2>May 2016: IDR demo-2</h2></a>
+          <a href="http://idr-demo.openmicroscopy.org/"><h2>IDR demo-2</h2></a>
         </section>
 
         <section class="center">
@@ -770,10 +641,6 @@ ansible-playbook -i inventory/openstack.py -e @vars/ome2016-overrides.yml os-idr
             <dt>Image Data Repository</dt>
             <dd><a href="http://idr-demo.openmicroscopy.org/">http://idr-demo.openmicroscopy.org/</a></dd>
           </dl>
-        </section>
-
-        <section class="center">
-          <h2>What next?</h2>
         </section>
 
         <section class="center">
