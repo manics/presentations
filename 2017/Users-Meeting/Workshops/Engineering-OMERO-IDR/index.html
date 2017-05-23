@@ -46,22 +46,327 @@
 
         <!-- title page -->
         <section class="center">
-          <h1>How we built the IDR</h1>
-          <h3>(And how you can build it too)</h3>
+          <h1>Engineering the IDR</h1>
+          <h3>(And how you can too)</h3>
           <h4>Simon Li</h4>
+        </section>
+
+        <!-- Introduction -->
+        <section>
+          <section class="center">
+            <h2>Aims of this talk</h2>
+            <ul>
+              <li>Explain how the IDR systems are deployed and managed</li>
+              <li>Show how to automate a large scale OMERO system</li>
+              <li>Introduce the principles and resources we use</li>
+            </ul>
+            <p class="fragment">Discussion</p>
+          </section>
+
+          <section class="center">
+            <h2>The Image Data Repository</h2>
+            <ul>
+              <li>A public resource to store, integrate and serve image datasets from published scientific studies</li>
+              <li>42 TB image data</li>
+              <li>2.7 million images</li>
+            </ul>
+          </section>
+
+          <!--
+            Annotation: 2838234
+            MapAnnotation: 2828438
+            ImageAnnotationLink: 13114596
+            WellAnnotationLink: 5420574
+          -->
+          <section class="center">
+            <h2>Behind the scenes:</h2>
+            <ul>
+              <li>98 TB raw data</li>
+              <li>14.6 million files</li>
+              <li>18.5 million annotation links (2.8 million annotations)</li>
+            </ul>
+          </section>
+
+          <section class="center">
+            <h2>Overview of the current IDR</h2>
+            <div>
+
+              <div class="flexcontainer">
+                <div class="flex2 fragment box">
+                  <img src="images/logos/nginx-logo.svg" class="plain" style="width:30%;" />
+                  <a href="https://idr.openmicroscopy.org" class="annotatex">https://idr.openmicroscopy.org</a>
+                </div>
+                <div class="flex1">
+                  <img src="images/logos/OpenStack-Logo-Horizontal.png" class="plain" style="width: 70%;" />
+                  <img src="images/logos/centos-logo-light-tagline-release7.svg" class="plain" style="width: 70%;" />
+                </div>
+              </div>
+
+              <div class="flexcontainer">
+                <div class="flex1 fragment">
+                  <a href="https://idr.openmicroscopy.org/webclient/userdata/?experimenter=-1" class="annotate">Public IDR</a>
+                  <div class="box">
+                    <img src="images/logos/omero-logo-800.png" class="plain" />
+                    <div class="annotate">OMERO.server</div>
+                    <div class="annotate">OMERO.web</div>
+                  </div>
+                  <div class="box">
+                    <img src="images/logos/postgresql-logo.png" class="plain" style="width: 70%;" />
+                  </div>
+                </div>
+
+                <div class="flex1 fragment">
+                  <a href="https://idr.openmicroscopy.org/jupyter/" class="annotate">IDR analysis</a>
+                  <div class="box">
+                    <img src="images/logos/jupyterhub-80.png" class="plain" style="width: 70%;" />
+                    <img src="images/logos/docker-logo-h-trans.png" class="plain" style="width: 70%;" />
+                  </div>
+                  <div class="box">
+                    <img src="images/logos/omero-logo-800.png" class="plain" />
+                  </div>
+                  <div class="box">
+                    <img src="images/logos/postgresql-logo.png" class="plain" style="width: 70%;" />
+                  </div>
+                </div>
+
+                <div class="flex1 fragment">
+                  <a class="annotate">Monitoring system</a>
+                  <div class="box">
+                    Munin
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+          </section>
+
+          <section class="center">
+            <h2>Current IDR compute resources</h2>
+          </section>
+
+          <section class="center">
+            <h2>Current EBI tenancy</h2>
+          </section>
+        </section>
+
+
+        <!-- Devops -->
+        <section>
+          <section class="center">
+            <h2>"Devops"</h2>
+          </section>
+
+          <section class="center">
+            <h2>Worked in dev, ops problem now</h2>
+          </section>
+
+          <section class="center">
+            <h2>In IDR: Two core concepts: cfg-mgmt, virtualisation</h2>
+          </section>
+        </section>
+
+
+        <!-- Configuration management -->
+        <section>
+          <section class="center">
+            <h2>Configuration management</h2>
+          </section>
+
+          <section class="center">
+            <h2>Ansible</h2>
+          </section>
+        </section>
+
+
+        <!-- OMERO all-in-one -->
+        <section>
+          <section class="center">
+            <h2>Ansible roles and playbooks</h2>
+          </section>
+
+          <section class="center">
+            <h2>All-in-one OMERO.server</h2>
+          </section>
+        </section>
+
+        <!-- Scaling up -->
+        <section>
+          <section class="center">
+            <h2>Separate database</h2>
+          </section>
+
+          <section class="center">
+            <h2>Separate database, OMERO.server and OMERO.web</h2>
+          </section>
+
+          <section class="center">
+            <h2>Public OMERO.web configuration</h2>
+          </section>
+
+          <section class="center">
+            <h2>Summary: fully working OMERO system</h2>
+          </section>
+        </section>
+
+
+        <!-- Virtualisation -->
+        <section>
+          <section class="center">
+            <h2>Clouds</h2>
+          </section>
+
+          <section class="center">
+            <h2>Openstack</h2>
+          </section>
+
+          <section class="center">
+            <h2>Ansible</h2>
+          </section>
+        </section>
+
+
+        <!-- Public IDR -->
+        <section>
+          <section class="center">
+            <h2>Cloud provisioning and snapshots</h2>
+          </section>
+
+          <section class="center">
+            <h2>Front-end caching proxy</h2>
+          </section>
+
+          <section class="center">
+            <h2>Performance tuning e.g. caching</h2>
+          </section>
+        </section>
+
+
+        <!-- VAE -->
+        <section>
+          <section class="center">
+            <h2>VAE</h2>
+          </section>
+
+          <section class="center">
+            <h2>Storage snapshots</h2>
+          </section>
+
+          <section class="center">
+            <h2>Docker</h2>
+          </section>
+        </section>
+
+
+        <!-- Full IDR -->
+        <section>
+          <section class="center">
+            <h2>IDR</h2>
+          </section>
+
+          <section class="center">
+            <h2>EBI tenancy with all environments</h2>
+          </section>
         </section>
 
 
         <section class="center">
-          <h2>The Image Data Repository</h2>
-
+          <h2>Summary so far</h2>
           <ul>
-            <li>A public resource to store, integrate and serve image datasets from published scientific studies</li>
-            <li>42 TB raw data</li>
-            <li>2.8 million images</li>
+            <li class="fragment">Automatically installed and configured OMERO</li>
+            <li class="fragment">Split across multiple servers</li>
+            <li class="fragment">Automatically provisioned virtual machines and storage</li>
+            <li class="fragment">Deployed multiple copies of the IDR</li>
           </ul>
         </section>
 
+
+        <!-- Docker -->
+        <section>
+          <section class="center">
+            <h2>Docker</h2>
+          </section>
+
+          <section class="center">
+            <h2>JupyterHub behind the scenes</h2>
+          </section>
+
+          <section class="center">
+            <h2>Docker images</h2>
+          </section>
+
+          <section class="center">
+            <h2>Docker or OpenStack?</h2>
+          </section>
+        </section>
+
+
+        <!-- Images -->
+        <section>
+          <section class="center">
+            <h2>Building cloud images</h2>
+          </section>
+
+          <section class="center">
+            <h2>OpenStack image using Ansible</h2>
+          </section>
+
+          <section class="center">
+            <h2>Docker image using Ansible</h2>
+          </section>
+        </section>
+
+
+        <!-- Summary -->
+        <section>
+          <section class="center">
+            <h2>Recap</h2>
+          </section>
+        </section>
+
+
+        <!-- Discussion topics -->
+        <section>
+          <section class="center">
+            <h2>Topics for discussion</h2>
+          </section>
+        </section>
+
+
+
+
+
+
+
+
+        <section>
+          <section class="center">
+            <h2>Aims of this talk</h2>
+            <ul class="fragment">
+              <li>Explain how the IDR systems are deployed and managed</li>
+              <li>Show how to automate a small or large scale OMERO system</li>
+              <li>Introduce the principles and resources used</li>
+            </ul>
+            <ul class="fragment">
+              <li>Discussion</li>
+            </ul>
+          </section>
+
+          <section class="center">
+            <h2>The Image Data Repository</h2>
+
+            <ul>
+              TODO: update
+              <li>A public resource to store, integrate and serve image datasets from published scientific studies</li>
+              <li>42 TB raw data</li>
+              <li>2.8 million images</li>
+            </ul>
+          </section>
+
+        </section>
+
+
+<!-- https://theagileadmin.com/what-is-devops/ -->
 
         <section class="center">
           <h2>Overview Part 1: IDR Development</h2>
@@ -146,28 +451,6 @@
 
 
         <section class="center">
-          <h2>September 2015: OMERO on Docker</h2>
-
-          <pre><code class="bash">
-yum install docker
-
-docker run -d -v /idr:/idr openmicroscopy/omero-deploy
-          </code></pre>
-          <p>Don't use <code>omero-deploy</code>, look out for a new production Docker image</p>
-        </section>
-
-
-        <section class="center">
-          <h2>September 2015: Importing data</h2>
-
-          <pre><code data-trim class="bash">
-omero import -- --checksum-algorithm=File-Size-64 --transfer=ln_s ...
-          </code></pre>
-          <p>See <a href="../Extensible-Import/index.html">Session 2: Extensible Import</a> for details</p>
-        </section>
-
-
-        <section class="center">
           <h2>System layout</h2>
 
           <div class="box">
@@ -247,7 +530,9 @@ omero import -- --checksum-algorithm=File-Size-64 --transfer=ln_s ...
               <li>Reproducible installations</li>
               <li>Documentation</li>
               <li>Version control</li>
+              <li>GitHub code reviews</li>
             </ul>
+            TODO: GH PR screenshot
           </section>
 
           <section class="center">
@@ -324,16 +609,6 @@ ansible-playbook run omero.yml
             </code></pre>
           </div>
         </div>
-        </section>
-
-
-        <section class="center">
-          <h2>March 2016: Copy 40 TB of data from Dundee to Cambridge (400 miles)</h2>
-
-          <ul>
-            <li>Option 1: Aspera (FTP on steroids)</li>
-            <li>Option 2: Fedex</li>
-          </ul>
         </section>
 
 
