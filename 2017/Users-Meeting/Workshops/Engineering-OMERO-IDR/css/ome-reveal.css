@@ -26,12 +26,15 @@
     transition: all .15s linear;
 }
 
-.fullscreen-image div {
+div.overlayimage, div.overlayimage-right {
     background-color: rgba(242,246,249,0.8);
     text-align: left;
+    padding: 10px;
+}
+
+div.overlayimage-right {
     width: 50%;
     margin-left: 50%;
-    padding: 10px;
 }
 
 .fullscreen-image h2:hover, .fullscreen-image h3:hover {
@@ -52,7 +55,7 @@
 
 .reveal pre.tiny code {
     white-space: pre-wrap;
-    font-size: 1em;
+    font-size: 0.7em;
     line-height: 1;
 }
 
@@ -114,9 +117,8 @@ p {
   text-align: left;
 }
 
-a.annotate, div.annotate {
+.reveal .annotate {
     font-size: 0.4em;
-    line-height: 1;
 }
 
 div.box {
@@ -128,4 +130,8 @@ div.box {
 .reveal section img.plain {
   margin: 0;
   padding: 5px;
+  vertical-align: middle;
+}
+img.inline {
+  vertical-align: middle;
 }
