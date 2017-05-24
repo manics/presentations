@@ -60,7 +60,7 @@
               <li>Show how to automate a large scale OMERO system</li>
               <li>Introduce the principles and resources we use</li>
             </ul>
-            <h2 class="fragment">Discussion</h2>
+            <h4 class="fragment spaceabove">Discussion</h2>
           </section>
 
           <section data-background="images/idr-screenshot-placeholder.png" data-background-size="1024px" class="fullscreen-image">
@@ -150,7 +150,8 @@
                     </div>
                   </div>
                   <div class="fragment" data-fragment-index="9" style="background-color: black; color: white; margin: 1em; padding: 0.1em 1em; font-size: 0.5em;">
-                    <ul>
+                    <ul class="nobullet">
+                      <li>7 virtual machines</li>
                       <li>76 vCPUs</li>
                       <li>296 GB RAM</li>
                       <li>2 TB volatile storage</li>
@@ -346,17 +347,40 @@ ansible-playbook allinone/playbook.yml
                   Scaling up: Separate database node <img src="images/logos/github-mark-28.png" class="inline" /></a>
               </h4>
               <div class="flex4">
-                <pre class="tiny"><code data-trim class="yaml">
+                <pre class="small"><code data-trim class="yaml">
 - hosts: omero-database
   roles:
     - role: openmicroscopy.postgresql
 
+
+- hosts: omero-server
+  roles:
+    - role: openmicroscopy.omero-server
+    - role: openmicroscopy.omero-web
+                </code></pre>
+              </div>
+            </div>
+            <div>
+            </div>
+          </section>
+
+          <section class="center">
+            <div class="flexcontainer">
+              <h4 class="flex1">
+                <a href="https://github.com/manics/ansible-public-omero-example/blob/ome2017-playbooks/two-nodes/playbook.yml">
+                  Scaling up: Separate database node <img src="images/logos/github-mark-28.png" class="inline" /></a>
+              </h4>
+              <div class="flex4">
+                <pre class="tiny"><code data-trim data-noescape class="yaml">
+- hosts: omero-database
+  ...
+
   vars:
-    postgresql_server_listen: "'*'"
+<mark>    postgresql_server_listen: "'*'"
     postgresql_server_auth:
     - database: omero
       user: omero
-      address: 0.0.0.0/0
+      address: 0.0.0.0/0</mark>
     postgresql_users_databases:
     - user: omero
       password: omero
@@ -365,12 +389,10 @@ ansible-playbook allinone/playbook.yml
 
 
 - hosts: omero-server
-  roles:
-    - role: openmicroscopy.omero-server
-    - role: openmicroscopy.omero-web
+  ...
 
   vars:
-    omero_server_dbhost: "{{ hostvars['omero-database'].ansible_eth0.ipv4.address }}"
+<mark>    omero_server_dbhost: "{{ hostvars['omero-database'].ansible_eth0.ipv4.address }}"</mark>
                 </code></pre>
               </div>
             </div>
@@ -405,7 +427,7 @@ omero_web_config_set:
             <ul>
               <li>OMERO.server: Bio-Formats cache</li>
               <li>OMERO.web: Optimise queries and HTTP requests</li>
-              <li>Nginx: Very aggressive front-end caching, pre-warmed</li>
+              <li>Nginx: Very aggressive front-end caching</li>
             </ul>
           </section>
 
@@ -472,48 +494,58 @@ omero_web_config_set:
         </section>
 
 
-        <!-- VAE -->
-        <section>
-          <section class="center">
-            <h2>VAE</h2>
-          </section>
-
-          <section class="center">
-            <h2>Storage snapshots</h2>
-          </section>
-
-          <section class="center">
-            <h2>Docker</h2>
-          </section>
-        </section>
-
-
         <!-- Full IDR -->
         <section>
           <section class="center">
-            <h2>IDR</h2>
-            <p>Full deployment with one script</p>
+            <h2>IDR: Deployed with one script</h2>
+            <ul>
+              <li>Provision storage, compute and network resources on OpenStack:
+                <ul class="nobullet">
+                  <li><a href="https://github.com/IDR/deployment/blob/IDR-0.3.7/ansible/openstack-create-infrastructure.yml">openstack-create-infrastructure.yml</a></li>
+                </ul>
+              </li>
+              <li>Install and configure all IDR components:
+                <ul class="nobullet">
+                  <li><a href="https://github.com/IDR/deployment/blob/IDR-0.3.7/ansible/idr-00-preinstall.yml">idr-00-preinstall.yml</a></li>
+                  <li><a href="https://github.com/IDR/deployment/blob/IDR-0.3.7/ansible/idr-01-install-idr.yml">idr-01-install-idr.yml</a></li>
+                  <li><a href="https://github.com/IDR/deployment/blob/IDR-0.3.7/ansible/idr-02-services.yml">idr-02-services.yml</a></li>
+                  <li><a href="https://github.com/IDR/deployment/blob/IDR-0.3.7/ansible/idr-03-postinstall.yml">idr-03-postinstall.yml</a></li>
+                  <li><a href="https://github.com/IDR/deployment/blob/IDR-0.3.7/ansible/idr-09-monitoring.yml">idr-09-monitoring.yml</a></li>
+                </ul>
+              </li>
+            </ul>
           </section>
 
           <section data-background="images/embassy-topology-20170524.png" class="fullscreen-image">
             <h2 class="fragment">Current EBI deployments</h2>
             <div class="flexcontainer">
-              <div class="fragment flex1 overlayimage" style="margin: 1em 3em;">
+              <div class="fragment flex1 overlayimage" style="margin: 10px;">
                 Production IDR
               </div>
               <div class="flex1"></div>
-              <div class="fragment flex1 overlayimage" style="margin: 1em 3em;">
+              <div class="fragment flex1 overlayimage" style="margin: 10px;">
                 Test IDR
               </div>
             </div>
             <div class="flexcontainer">
-              <div class="fragment flex1 overlayimage" style="margin: 1em 3em;">
+              <div class="fragment flex1 overlayimage" style="margin: 10px;">
                 Next release
               </div>
               <div class="flex1"></div>
-              <div class="fragment flex1 overlayimage" style="margin: 1em 3em;">
+              <div class="fragment flex1 overlayimage" style="margin: 10px;">
                 Continuous integration
               </div>
+            </div>
+            <div class="flexcontainer">
+              <div class="fragment overlayimage" style="background-color: black; color: white; margin: 1em;">
+              <ul class="flex1 nobullet">
+                <li>34 virtual machines</li>
+                <li>339 vCPUs</li>
+              </ul>
+              <ul class="flex1 nobullet">
+                <li>1347 GB RAM</li>
+                <li>16 TB volatile storage</li>
+              </ul>
             </div>
           </section>
         </section>
@@ -533,7 +565,7 @@ omero_web_config_set:
         <section>
           <section class="center">
             <h1>What next for the IDR?</h1>
-            <div class="fragment">Horizontal scaling</div>
+            <div class="fragment">Horizontal scaling (in progress)</div>
           </section>
 
           <section class="center">
@@ -712,7 +744,7 @@ omero_web_config_set:
               <li>Identical to the Docker workflow!</li>
               <li class="fragment">We can build a Docker image using Ansible</li>
             </ul>
-            <h4 class="fragment" style="padding: 2em;">Use same Ansible roles for physical systems, OpenStack, AWS, Google Cloud, Azure, VMWare, Docker.</h4>
+            <h4 class="fragment spaceabove">Use same Ansible roles for physical systems, OpenStack, AWS, Google Cloud, Azure, VMWare, Docker ...</h4>
           </section>
 
         </section>
@@ -736,10 +768,11 @@ omero_web_config_set:
         <section>
           <section class="center">
             <h2>Possible topics for discussion</h2>
-            <p>Running virtualised OMERO</p>
+            <p>Virtualised OMERO</p>
             <p>Your experiences of configuration management</p>
             <p>Docker for running services or computational analysis</p>
             <p>New technologies you think we should look at</p>
+            <p>Infrastructure for high content analysis workflows</p>
             <p>....</p>
           </section>
         </section>

@@ -55,7 +55,7 @@ div.overlayimage-right {
 
 .reveal pre.tiny code {
     white-space: pre-wrap;
-    font-size: 0.7em;
+    font-size: 0.8em;
     line-height: 1;
 }
 
@@ -134,4 +134,12 @@ div.box {
 }
 img.inline {
   vertical-align: middle;
+}
+
+h4.spaceabove {
+  padding-top: 2em;
+}
+
+mark {
+  background-color: teal;
 }
