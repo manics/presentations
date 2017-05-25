@@ -82,11 +82,11 @@
               <li>15 million files</li>
               <li>19 million annotations</li>
             </ul>
-            <aside class="notes">
-            Annotation: 2838234,
-            MapAnnotation: 2828438,
-            ImageAnnotationLink: 13114596,
-            WellAnnotationLink: 5420574,
+            <aside class="notes" data-markdown>
+- Annotations: 2838234
+- MapAnnotation: 2828438
+- ImageAnnotationLink: 13114596
+- WellAnnotationLink: 5420574
 	          </aside>
           </section>
         </section>
@@ -184,7 +184,7 @@
             <h1>How do we do this?</h1>
             <div class="fragment">....</div>
             <aside class="notes">
-              "DevOps"
+              What is "DevOps"?
             </aside>
           </section>
 
@@ -198,8 +198,13 @@
               <li class="fragment">Resource virtualisation</li>
               <li class="fragment">Develop-Test-Release new datasets</li>
             </ul>
-            <aside class="notes">
-              A release includes software, configuration and datasets
+            <aside class="notes" data-markdown>
+Last point not covered.
+IDR releases are the combination of:
+- Software
+- Configuration
+- Data
+- Metadata
             </aside>
           </section>
         </section>
@@ -294,6 +299,9 @@
                 </ul>
               </div>
             </div>
+            <aside class="notes">
+              Digital Ocean has a good set of tutorial for sysadmins.
+            </aside>
           </section>
         </section>
 
@@ -308,10 +316,14 @@
                   <img src="images/ansible-galaxy-openmicroscopy-head.png" />
                 </a>
               </div>
-              <ul class="flex" style="list-style-image: url('images/logos/ansible-a-24.png');">
-                <li><a href="https://galaxy.ansible.com/openmicroscopy/omero-server/">omero-server role</a></li>
-                <li><a href="https://galaxy.ansible.com/openmicroscopy/omero-web/">omero-web role</a></li>
-              </ul>
+              <div class=flex1>
+                “the Ansible way of bundling automation content and making it reusable”
+                <ul class="flexx" style="list-style-image: url('images/logos/ansible-a-24.png');">
+                  <li><a href="https://galaxy.ansible.com/openmicroscopy/omero-server/">omero-server role</a></li>
+                  <li><a href="https://galaxy.ansible.com/openmicroscopy/omero-web/">omero-web role</a></li>
+                </ul>
+              </div>
+            </div>
           </section>
 
           <section class="center">
@@ -321,7 +333,23 @@
               </h4>
               <div class="flex4">
                 <pre class="small"><code data-trim data-noescape class="yaml">
-- <mark>hosts: omero-allinone.example.org</mark>
+# inventory
+[all]
+<mark>omero-allinone</mark> ansible_host=192.168.1.1
+                </code></pre>
+              </div>
+            </div>
+          </section>
+
+          <section class="center">
+            <div class="flexcontainer">
+              <h4 class="flex1">
+                <a href="https://github.com/manics/ansible-public-omero-example/blob/ome2017-playbooks/allinone/playbook.yml">All-in-one OMERO <img src="images/logos/github-mark-28.png" class="inline" /></a>
+              </h4>
+              <div class="flex4">
+                <pre class="small"><code data-trim data-noescape class="yaml">
+# playbook.yml
+- <mark>hosts: omero-allinone</mark>
   roles:
     - role: openmicroscopy.postgresql
     - role: openmicroscopy.omero-server
@@ -338,8 +366,24 @@
             </div>
             <div>
               <pre class="small"><code data-trim class="bash">
-ansible-playbook allinone/playbook.yml
+ansible-playbook -i inventory playbook.yml
               </code></pre>
+            </div>
+          </section>
+
+          <section class="center">
+            <div class="flexcontainer">
+              <h4 class="flex1">
+                <a href="https://github.com/manics/ansible-public-omero-example/blob/ome2017-playbooks/allinone/playbook.yml">All-in-one OMERO <img src="images/logos/github-mark-28.png" class="inline" /></a>
+              </h4>
+              <div class="flex4">
+                <pre class="small"><code data-trim data-noescape class="yaml">
+# inventory
+[all]
+<mark>omero-database</mark> ansible_host=192.168.1.1
+<mark>omero-server</mark> ansible_host=192.168.1.2
+                </code></pre>
+              </div>
             </div>
           </section>
 
@@ -351,19 +395,17 @@ ansible-playbook allinone/playbook.yml
               </h4>
               <div class="flex4">
                 <pre class="small"><code data-trim data-noescape class="yaml">
-- <mark>hosts: omero-database.example.org</mark>
+# playbook.yml
+- <mark>hosts: omero-database</mark>
   roles:
     - role: openmicroscopy.postgresql
 
-
-- <mark>hosts: omero-server.example.org</mark>
+- <mark>hosts: omero-server</mark>
   roles:
     - role: openmicroscopy.omero-server
     - role: openmicroscopy.omero-web
                 </code></pre>
               </div>
-            </div>
-            <div>
             </div>
           </section>
 
@@ -375,29 +417,32 @@ ansible-playbook allinone/playbook.yml
               </h4>
               <div class="flex4">
                 <pre class="tiny"><code data-trim data-noescape class="yaml">
-- hosts: omero-database.example.org
+# playbook.yml
+- hosts: omero-database
   ...
   vars:
-<mark>    postgresql_server_listen: "'*'"
-    postgresql_server_auth:
+    <mark>postgresql_server_listen</mark>: "'*'"
+    <mark>postgresql_server_auth</mark>:
     - database: omero
       user: omero
-      address: 0.0.0.0/0</mark>
+      address: 0.0.0.0/0
     postgresql_users_databases:
     - user: omero
       password: omero
       databases: [omero]
     postgresql_version: "9.6"
 
-
-- hosts: omero-server.example.org
+- hosts: omero-server
   ...
   vars:
-<mark>    omero_server_dbhost: "{{ hostvars['omero-database'].ansible_eth0.ipv4.address }}"</mark>
+    <mark>omero_server_dbhost</mark>: "{{ hostvars[<mark>'omero-database'</mark>].ansible_eth0.ipv4.address }}"
                 </code></pre>
               </div>
             </div>
             <div>
+              <pre class="small"><code data-trim class="bash">
+ansible-playbook -i inventory playbook.yml
+              </code></pre>
             </div>
           </section>
 
@@ -692,7 +737,7 @@ omero_web_config_set:
                 <img src="images/logos/prometheus.png" class="plain" style="width: 40%;'" />
                 <img src="images/logos/Slack_RGB.svg" class="plain" style="width: 40%;'" />
               </div>
-              <div class="flex3">
+              <div class="flex2">
                 <img src="images/logos/OpenStack-Logo-Horizontal.png" class="plain" style="width: 30%;" />
                 <img src="images/logos/docker-logo-h-trans.png" class="plain" style="width: 30%;" />
                 <img src="images/logos/centos-logo-light-tagline-release7.svg" class="plain" style="width: 30%;" />
@@ -706,11 +751,26 @@ omero_web_config_set:
         <section>
           <section class="center">
             <h2>What's needed for horizontal scaling?</h2>
+            <div>
+              Software support
+            </div>
+            <ul class="nobullet">
+              <li class="fragment"><span style="color:green;">&#10004;</span>Nginx</li>
+              <li class="fragment"><span style="color:green;">&#10004;</span>PostgreSQL</li>
+              <li class="fragment"><span style="color:green;">&#10004;</span><span style="color:red;">&#10008;</span>OMERO</li>
+            </ul>
+          </section>
+
+          <section class="center">
+            <h2>What's needed for horizontal scaling?</h2>
             <ul class="nobullet">
               <li class="fragment"><span style="color:green;">&#10004;</span>Provision virtual machines</li>
               <li class="fragment"><span style="color:green;">&#10004;</span>Install IDR applications</li>
-              <li class="fragment"><span style="color:green;">&#10004;</span>Provision virtual machines</li>
-              <li class="fragment"><span style="color:green;">&#10004;</span>Install IDR applications</li>
+            </ul>
+            <div class="fragment">
+              ....
+            </div>
+            <ul class="nobullet">
               <li class="fragment"><span style="color:green;">&#10004;</span>Provision virtual machines</li>
               <li class="fragment"><span style="color:red;">&#10008;</span>Install IDR applications</li>
             </ul>
@@ -734,7 +794,8 @@ omero_web_config_set:
             </a>
             <ul>
               <li>Build images using Ansible playbooks</li>
-              <li>Configure applications at runtime</li>
+              <li>Most configuration can be built in to image</li>
+              <li>Remaining configuration at runtime (e.g. address of other servers)</li>
             </ul>
           </section>
 
