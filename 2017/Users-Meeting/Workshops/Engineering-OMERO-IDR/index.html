@@ -764,17 +764,28 @@ omero_web_config_set:
           <section class="center">
             <h2>What's needed for horizontal scaling?</h2>
             <div>
-              Software support
+              Software support:
             </div>
             <ul class="nobullet">
               <li class="fragment"><span style="color:green;">&#10004;</span>Nginx</li>
               <li class="fragment"><span style="color:green;">&#10004;</span>PostgreSQL</li>
-              <li class="fragment"><span style="color:green;">&#10004;</span><span style="color:red;">&#10008;</span>OMERO</li>
+              <li class="fragment">? OMERO</li>
+              <li class="fragment"><span style="color:green;">&#10004;</span>Jupyterhub</li>
             </ul>
           </section>
 
           <section class="center">
             <h2>What's needed for horizontal scaling?</h2>
+            <ul class="nobullet">
+              <li class="fragment">? Distributed storage</li>
+            </ul>
+          </section>
+
+          <section class="center">
+            <h2>What's needed for horizontal scaling?</h2>
+            <div>
+              Automated deployments:
+            </div>
             <ul class="nobullet">
               <li class="fragment"><span style="color:green;">&#10004;</span>Provision virtual machines</li>
               <li class="fragment"><span style="color:green;">&#10004;</span>Install IDR applications</li>
@@ -812,9 +823,10 @@ omero_web_config_set:
           </section>
 
           <section>
-            <h2>If you're familiar with Docker</h2>
+            <h2>This sounds very similar to...</h2>
+            <img src="images/logos/docker-logo-h-trans.png" class="plain fragment" style="width: 50%;" />
             <ul class="fragment">
-              <li>Identical to the Docker workflow!</li>
+              <li>Identical to the Docker workflow</li>
               <li class="fragment">We can build a Docker image using Ansible</li>
             </ul>
             <h4 class="fragment spaceabove">Use same Ansible roles for physical systems, OpenStack, AWS, Google Cloud, Azure, VMWare, Docker ...</h4>
